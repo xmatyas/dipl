@@ -1,37 +1,52 @@
-<!-- templates/index_server_side.html -->
+<!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Upload</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        #drop_zone {
-            width: 300px;
-            height: 150px;
-            border: 2px dashed #ccc;
-            text-align: center;
-            padding: 10px;
-            margin: 10px auto;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <h1>File Upload</h1>
+    <br>
+    <header>
+        <h1>File Upload Test</h1>
+    </header>
 
-    <div id="drop_zone" onclick="triggerFileInput()">
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <p>Drag and drop a file here or click to select a file.</p>
-            <input type="file" name="file" id="fileInput" style="display: none;" onchange="this.form.submit()">
-        </form>
-    </div>
-
+    <main>
+        <div class="form">
+            <div id="drop_zone" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)"
+                ondrop="handleDrop(event)" onclick="triggerFileInput()">
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <p>Drop in a .pdf!</p>
+                    <input type="file" name="file" id="fileInput" style="display: none;" onchange="this.form.submit()">
+                </form>
+            </div>
+        </div>
+    </main>
+    <p style="font-size: small; text-align: center; margin-top: 2rem;">Created by <a href="https://github.com/xmatyas"
+            target="_blank">xmatyas</a></p>
     <script>
+        function handleDragOver(event) {
+            event.preventDefault();
+            document.getElementById('drop_zone').classList.add('dragover');
+        }
+
+        function handleDragLeave(event) {
+            event.preventDefault();
+            document.getElementById('drop_zone').classList.remove('dragover');
+        }
+
+        function handleDrop(event) {
+            event.preventDefault();
+            document.getElementById('drop_zone').classList.remove('dragover');
+
+            var fileInput = document.getElementById('fileInput');
+            var files = event.dataTransfer.files;
+
+            fileInput.files = files;
+            document.forms[0].submit();
+        }
         function triggerFileInput() {
             document.getElementById('fileInput').click();
         }
