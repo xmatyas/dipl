@@ -66,7 +66,7 @@ def create_and_train_model():
     # Run training
     model.fit(
         ds_train,
-        epochs=20,
+        epochs=5,
         validation_data=ds_test,
     )
 
