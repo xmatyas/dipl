@@ -1,16 +1,7 @@
 {
-    "jupyter.kernels.filter": [
-        {
-            "path": "/sbin/python",
-            "type": "pythonEnvironment"
-        },
-        {
-            "path": "/usr/bin/python",
-            "type": "pythonEnvironment"
-        },
-        {
-            "path": "/usr/sbin/python",
-            "type": "pythonEnvironment"
-        }
+    "jupyter.kernels.excludePythonEnvironments": [
+        "/sbin/python",
+        "/usr/bin/python",
+        "/usr/sbin/python"
     ]
 }
