@@ -1,0 +1,10 @@
+# Celery config file
+CELERY:
+  BROKER_URL: "redis://localhost:6379/0"
+  RESULT_BACKEND: "redis://localhost:6379/1"
+  TASK_IGNORE_RESULT: False
+  BROKER_CONNECTION_RETRY_ON_STARTUP: True
+FLASK:
+  UPLOAD_FOLDER: "uploads"
+  ALLOWED_EXTENSIONS:
+    - pdf
