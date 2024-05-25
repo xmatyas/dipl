@@ -1,0 +1,13 @@
+# Celery config file
+CELERY:
+  broker_url: "redis://localhost:6379/0"
+  broker_connection_retry_on_startup: True
+  result_backend: "redis://localhost:6379/1"
+  task_ignore_result: False
+  task_track_started: True
+FLASK:
+  upload_folder: "uploads"
+  allowed_extensions:
+    - jpeg
+    - jpg
+    - png

@@ -1,0 +1,15 @@
+settings:
+  block_width: 21
+  block_height: 33
+  spacing: 6
+  lightness_threshold: 0.08
+  
+sequences:
+  - name: "Priezvisko"
+    x: 3
+    y: 522
+    blocks: 16
+  - name: "Meno"
+    x: 449
+    y: 522
+    blocks: 11
